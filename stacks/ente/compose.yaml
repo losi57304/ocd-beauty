@@ -51,6 +51,7 @@ services:
       ENTE_S3_B2_EU_CEN_USE_PATH_STYLE: true
       ENTE_S3_B2_EU_CEN_KEY: ${ENTE_S3_B2_EU_CEN_KEY}
       ENTE_S3_B2_EU_CEN_SECRET: ${ENTE_S3_B2_EU_CEN_SECRET}
+      GIN_MODE: release
     networks:
       - default
       - proxy
