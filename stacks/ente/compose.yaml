@@ -5,6 +5,7 @@ services:
       GARAGE_RPC_SECRET: ${GARAGE_RPC_SECRET}
     networks:
       - default
+      - proxy
     volumes:
       - /srv/ente/garage/data:/var/lib/garage/data
       - /srv/ente/garage/meta:/var/lib/garage/meta
