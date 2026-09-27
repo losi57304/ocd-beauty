@@ -1,6 +1,6 @@
 # ocd.beauty
-## Setup
-### System
+# Setup
+## System
 ```sh
 apt update
 apt upgrade -y
@@ -40,21 +40,21 @@ docker network create proxy
 pip install awscli --break-system-packages
 ```
 
-### Environment variables
-#### Chat
+## Environment variables
+### Chat
 `LIVEKIT_KEY`
 `LIVEKIT_SECRET`
 ```sh
 docker run --rm livekit/livekit-server generate-keys
 ```
 
-#### Dashboard
+### Dashboard
 `AUTH_SECRET_KEY`
 ```sh
 docker run --rm glanceapp/glance secret:make
 ```
 
-#### Ente
+### Ente
 `POSTGRES_PASSWORD`
 ```sh
 head -c 21 /dev/urandom | base64 | tr -d '\n'
@@ -91,8 +91,8 @@ head -c 32 /dev/urandom | base64 | tr -d '\n'
 head -c 64 /dev/urandom | base64 | tr -d '\n'
 ```
 
-### Containers
-#### Ente
+## Containers
+### Ente
 ```sh
 export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
@@ -103,4 +103,9 @@ CORS='{"CORSRules":[{"AllowedHeaders":["*"],"AllowedMethods":["GET","PUT","POST"
 aws --endpoint-url https://s3.ente.ocd.beauty s3api put-bucket-cors \
   --bucket garage \
   --cors-configuration "$CORS"
+```
+
+# Post-setup
+```sh
+pip uninstall awsli
 ```
