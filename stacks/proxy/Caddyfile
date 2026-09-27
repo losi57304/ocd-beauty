@@ -1,5 +1,5 @@
 chat.ocd.beauty {
-	reverse_proxy continuwuity:8000
+	reverse_proxy continuwuity:8008
 }
 
 rtc.chat.ocd.beauty {
@@ -23,5 +23,5 @@ file.music.ocd.beauty {
 }
 
 secret.ocd.beauty {
-	reverse_proxy vaultwarden-server:8000
+	reverse_proxy vaultwarden-server:80
 }
