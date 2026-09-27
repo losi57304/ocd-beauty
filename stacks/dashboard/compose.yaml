@@ -4,6 +4,7 @@ services:
     environment:
       AUTH_SECRET_KEY: ${AUTH_SECRET_KEY}
       AUTH_USERS_LOSI57304_PASSWORD: ${AUTH_USERS_LOSI57304_PASSWORD}
+      WEATHER_LOCATION: ${WEATHER_LOCATION}
     networks:
       - proxy
     volumes:

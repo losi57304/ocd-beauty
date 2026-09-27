@@ -8,6 +8,10 @@ pages:
   - name: Dashboard
     hide-desktop-navigation: true
     columns:
+      - size: small
+        widgets:
+          - type: calendar
+
       - size: full
         widgets:
           - type: docker-containers
@@ -18,6 +22,12 @@ pages:
               - UCq438-bykwcdis0YKjLoqXw # imago meri
               - UC0tK9G9GMeWQzJJsVjBrEhQ # The House of Kush
               - UCR1ATYyCJML6dxqgQhwIKZg # Cadence Hira
+
+      - size: small
+        widgets:
+          - type: weather
+            hour-format: 24h
+            location: ${WEATHER_LOCATION}
 
 server:
   proxied: true
