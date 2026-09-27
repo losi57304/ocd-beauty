@@ -1,0 +1,5 @@
+internal:
+  disable-registration: false
+  hardcoded-ott:
+    local-domain-suffix: "@ente.ocd.beauty"
+    local-domain-value: 012345
