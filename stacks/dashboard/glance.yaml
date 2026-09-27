@@ -5,19 +5,19 @@ auth:
       password: ${AUTH_USERS_LOSI57304_PASSWORD}
 
 pages:
-  name: Dashboard
-  hide-desktop-navigation: true
-  columns:
-    - size: full
-      widgets:
-        - type: docker-containers
+  - name: Dashboard
+    hide-desktop-navigation: true
+    columns:
+      - size: full
+        widgets:
+          - type: docker-containers
 
-        - type: videos
-          channels:
-            - UCllddADt_Nl4iikd7CHB77w # SimTheNep VGM
-            - UCq438-bykwcdis0YKjLoqXw # imago meri
-            - UC0tK9G9GMeWQzJJsVjBrEhQ # The House of Kush
-            - UCR1ATYyCJML6dxqgQhwIKZg # Cadence Hira
+          - type: videos
+            channels:
+              - UCllddADt_Nl4iikd7CHB77w # SimTheNep VGM
+              - UCq438-bykwcdis0YKjLoqXw # imago meri
+              - UC0tK9G9GMeWQzJJsVjBrEhQ # The House of Kush
+              - UCR1ATYyCJML6dxqgQhwIKZg # Cadence Hira
 
 server:
   proxied: true
