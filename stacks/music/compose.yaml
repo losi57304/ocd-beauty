@@ -8,7 +8,7 @@ services:
       - /srv/navidrome/music:/music:ro
     restart: unless-stopped
     labels:
-      glance.icon: sh:navidrome
+      glance.icon: sh:navidrome-light
       glance.name: Navidrome
       glance.url: https://music.ocd.beauty
     security_opt:

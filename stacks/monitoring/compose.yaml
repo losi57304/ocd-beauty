@@ -8,7 +8,7 @@ services:
       - /srv/beszel/data:/beszel_data
     restart: unless-stopped
     labels:
-      glance.icon: sh:beszel
+      glance.icon: sh:beszel-light
       glance.name: Beszel
       glance.url: https://monitoring.ocd.beauty
     security_opt:
