@@ -34,15 +34,41 @@ sh ./get-docker.sh --dry-run
 docker network create proxy
 ```
 
-## glance
+## Dashboard
 `AUTH_SECRET_KEY`
 ```sh
 docker run --rm glanceapp/glance secret:make
 ```
 
-## lk-jwt-service, livekit-server
+## Chat
 `LIVEKIT_KEY`
 `LIVEKIT_SECRET`
 ```sh
 docker run --rm livekit/livekit-server generate-keys
+```
+
+## Ente
+`POSTGRES_PASSWORD`
+```sh
+head -c 21 /dev/urandom | base64 | tr -d '\n'
+```
+
+`GARAGE_RPC_SECRET`
+```sh
+openssl rand -hex 32
+```
+
+`ENTE_JWT_SECRET`
+```sh
+head -c 32 /dev/urandom | base64 | tr -d '\n' | tr '+/' '-_'
+```
+
+`ENTE_KEY_ENCRYPTION`
+```sh
+head -c 32 /dev/urandom | base64 | tr -d '\n'
+```
+
+`ENTE_KEY_HASH`
+```sh
+head -c 64 /dev/urandom | base64 | tr -d '\n'
 ```
