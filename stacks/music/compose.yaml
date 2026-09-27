@@ -17,12 +17,13 @@ services:
   navidrome-dufs:
     image: sigoden/dufs:v0.46.0
     command:
+      - /data
       - -a
       - ${DUFS_USERNAME}:${DUFS_PASSWORD}@/:rw
     networks:
       - proxy
     volumes:
-      - /srv/navidrome/music:/
+      - /srv/navidrome/music:/data
     restart: unless-stopped
     labels:
       glance.icon: sh:dufs.webp
