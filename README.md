@@ -58,6 +58,17 @@ head -c 21 /dev/urandom | base64 | tr -d '\n'
 openssl rand -hex 32
 ```
 
+`ENTE_S3_B2_EU_CEN_KEY`
+`ENTE_S3_B2_EU_CEN_SECRET`
+```sh
+docker compose exec ente-garage /garage status
+docker compose exec ente-garage /garage layout assign -z ocd-beauty -c 100G ...
+docker compose exec ente-garage /garage layout apply --version 1
+docker compose exec ente-garage /garage key create ente-key
+docker compose exec ente-garage /garage bucket create garage
+docker compose exec ente-garage /garage bucket allow --read --write --owner garage --key ente-key
+```
+
 `ENTE_JWT_SECRET`
 ```sh
 head -c 32 /dev/urandom | base64 | tr -d '\n' | tr '+/' '-_'
