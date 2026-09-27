@@ -1,11 +1,13 @@
 # ocd.beauty
+## Setup
+### System
 ```sh
 apt update
 apt upgrade -y
 ```
 
 ```sh
-apt install -y ufw unattended-upgrades
+apt install -y ufw unattended-upgrades python3 python3-pip
 ```
 
 ```sh
@@ -34,20 +36,25 @@ sh ./get-docker.sh --dry-run
 docker network create proxy
 ```
 
-## Dashboard
-`AUTH_SECRET_KEY`
 ```sh
-docker run --rm glanceapp/glance secret:make
+pip install awscli --break-system-packages
 ```
 
-## Chat
+### Environment variables
+#### Chat
 `LIVEKIT_KEY`
 `LIVEKIT_SECRET`
 ```sh
 docker run --rm livekit/livekit-server generate-keys
 ```
 
-## Ente
+#### Dashboard
+`AUTH_SECRET_KEY`
+```sh
+docker run --rm glanceapp/glance secret:make
+```
+
+#### Ente
 `POSTGRES_PASSWORD`
 ```sh
 head -c 21 /dev/urandom | base64 | tr -d '\n'
@@ -82,4 +89,18 @@ head -c 32 /dev/urandom | base64 | tr -d '\n'
 `ENTE_KEY_HASH`
 ```sh
 head -c 64 /dev/urandom | base64 | tr -d '\n'
+```
+
+### Containers
+#### Ente
+```sh
+export AWS_ACCESS_KEY_ID=
+export AWS_SECRET_ACCESS_KEY=
+export AWS_DEFAULT_REGION=garage
+
+CORS='{"CORSRules":[{"AllowedHeaders":["*"],"AllowedMethods":["GET","PUT","POST","DELETE"],"AllowedOrigins":["*"],"ExposeHeaders":["ETag"]}]}'
+
+aws --endpoint-url https://s3.ente.ocd.beauty s3api put-bucket-cors \
+  --bucket garage \
+  --cors-configuration "$CORS"
 ```
