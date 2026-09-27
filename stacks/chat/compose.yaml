@@ -1,0 +1,52 @@
+services:
+  continuwuity:
+    image: forgejo.ellis.link/continuwuation/continuwuity:sha-c6f2c5e-maxperf
+    command:
+      - /sbin/conduwuit
+    environment:
+      CONTINUWUITY_ALLOW_REGISTRATION: ${CONTINUWUITY_ALLOW_REGISTRATION}
+      CONTINUWUITY_CONFIG: /etc/continuwuity.toml
+    networks:
+      - proxy
+    volumes:
+      - /srv/continuwuity/data:/var/lib/continuwuity
+      - ./continuwuity.toml:/etc/continuwuity.toml:ro
+    restart: unless-stopped
+    labels:
+      glance.hide: true
+    security_opt:
+      - no-new-privileges:true
+
+  lk-jwt-service:
+    image: ghcr.io/element-hq/lk-jwt-service:0.7.0
+    environment:
+      LIVEKIT_FULL_ACCESS_HOMESERVERS: chat.ocd.beauty
+      LIVEKIT_KEY: ${LIVEKIT_KEY}
+      LIVEKIT_SECRET: ${LIVEKIT_SECRET}
+      LIVEKIT_URL: wss://rtc.chat.ocd.beauty
+    networks:
+      - proxy
+    restart: unless-stopped
+    labels:
+      glance.hide: true
+    security_opt:
+      - no-new-privileges:true
+
+  livekit-server:
+    image: livekit/livekit-server:v1.13.6
+    command:
+      - --config=/etc/livekit.yaml
+    environment:
+      LIVEKIT_KEYS: "${LIVEKIT_KEY}: ${LIVEKIT_SECRET}"
+    network_mode: host
+    volumes:
+      - ./livekit.yaml:/etc/livekit.yaml:ro
+    restart: unless-stopped
+    labels:
+      glance.hide: true
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  proxy:
+    external: true

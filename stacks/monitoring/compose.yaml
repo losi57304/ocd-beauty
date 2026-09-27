@@ -1,0 +1,36 @@
+services:
+  beszel:
+    image: henrygd/beszel:0.19.0
+    networks:
+      - proxy
+    volumes:
+      - /run/beszel:/run/beszel
+      - /srv/beszel/data:/beszel_data
+    restart: unless-stopped
+    labels:
+      glance.icon: sh:beszel
+      glance.name: Beszel
+      glance.url: https://monitoring.ocd.beauty
+    security_opt:
+      - no-new-privileges:true
+
+  beszel-agent:
+    image: henrygd/beszel-agent:0.19.0
+    depends_on:
+      - beszel
+    environment:
+      KEY: ${BESZEL_AGENT_KEY}
+      LISTEN: /run/beszel/beszel.sock
+      TOKEN: ${BESZEL_AGENT_TOKEN}
+    volumes:
+      - /run/beszel:/run/beszel
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: unless-stopped
+    labels:
+      glance.hide: true
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  proxy:
+    external: true

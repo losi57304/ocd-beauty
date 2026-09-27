@@ -1,0 +1,27 @@
+chat.ocd.beauty {
+	reverse_proxy continuwuity:8000
+}
+
+rtc.chat.ocd.beauty {
+	reverse_proxy livekit-server:7880
+}
+
+dashboard.ocd.beauty {
+	reverse_proxy glance:8080
+}
+
+monitoring.ocd.beauty {
+	reverse_proxy beszel:8090
+}
+
+music.ocd.beauty {
+	reverse_proxy navidrome:4533
+}
+
+file.music.ocd.beauty {
+	reverse_proxy navidrome-dufs:5000
+}
+
+secret.ocd.beauty {
+	reverse_proxy vaultwarden-server:8000
+}
