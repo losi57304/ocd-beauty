@@ -14,6 +14,10 @@ ente.ocd.beauty {
 	reverse_proxy ente-server:8080
 }
 
+s3.ente.ocd.beauty {
+	reverse_proxy ente-garage:3900
+}
+
 monitoring.ocd.beauty {
 	reverse_proxy beszel:8090
 }
