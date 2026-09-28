@@ -5,10 +5,7 @@ server_name = "chat.ocd.beauty"
 
 [global.matrix_rtc]
 foci = [
-    {
-        livekit_service_url = "https://rtc.chat.ocd.beauty",
-        type = "livekit"
-    },
+    { livekit_service_url = "https://rtc.chat.ocd.beauty", type = "livekit" }
 ]
 
 [global.well_known]
