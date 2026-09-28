@@ -4,6 +4,5 @@ include:
   - stacks/ente/compose.yaml
   - stacks/monitoring/compose.yaml
   - stacks/music/compose.yaml
-  - stacks/note/compose.yaml
   - stacks/proxy/compose.yaml
   - stacks/secret/compose.yaml

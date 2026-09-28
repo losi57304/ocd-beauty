@@ -1,20 +1,24 @@
+x-common: &common
+  restart: unless-stopped
+  security_opt:
+    - no-new-privileges:true
+
 services:
   beszel:
+    <<: *common
     image: henrygd/beszel:0.19.0
     networks:
       - proxy
     volumes:
       - /run/beszel:/run/beszel
       - /srv/beszel/data:/beszel_data
-    restart: unless-stopped
     labels:
       glance.icon: sh:beszel-light
       glance.name: Beszel
       glance.url: https://monitoring.ocd.beauty
-    security_opt:
-      - no-new-privileges:true
 
   beszel-agent:
+    <<: *common
     image: henrygd/beszel-agent:0.19.0
     depends_on:
       - beszel
@@ -25,11 +29,8 @@ services:
     volumes:
       - /run/beszel:/run/beszel
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    restart: unless-stopped
     labels:
       glance.hide: true
-    security_opt:
-      - no-new-privileges:true
 
 networks:
   proxy:

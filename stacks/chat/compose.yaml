@@ -1,5 +1,13 @@
+x-common: &common
+  restart: unless-stopped
+  security_opt:
+    - no-new-privileges:true
+  labels:
+    glance.hide: true
+
 services:
   continuwuity:
+    <<: *common
     image: forgejo.ellis.link/continuwuation/continuwuity:sha-c6f2c5e-maxperf
     command:
       - /sbin/conduwuit
@@ -11,13 +19,9 @@ services:
     volumes:
       - /srv/continuwuity/data:/var/lib/continuwuity
       - ./continuwuity.toml:/etc/continuwuity.toml:ro
-    restart: unless-stopped
-    labels:
-      glance.hide: true
-    security_opt:
-      - no-new-privileges:true
 
   lk-jwt-service:
+    <<: *common
     image: ghcr.io/element-hq/lk-jwt-service:0.7.0
     environment:
       LIVEKIT_FULL_ACCESS_HOMESERVERS: chat.ocd.beauty
@@ -26,13 +30,9 @@ services:
       LIVEKIT_URL: wss://rtc.chat.ocd.beauty
     networks:
       - proxy
-    restart: unless-stopped
-    labels:
-      glance.hide: true
-    security_opt:
-      - no-new-privileges:true
 
   livekit-server:
+    <<: *common
     image: livekit/livekit-server:v1.13.6
     command:
       - --config=/etc/livekit.yaml
@@ -41,11 +41,6 @@ services:
     network_mode: host
     volumes:
       - ./livekit.yaml:/etc/livekit.yaml:ro
-    restart: unless-stopped
-    labels:
-      glance.hide: true
-    security_opt:
-      - no-new-privileges:true
 
 networks:
   proxy:

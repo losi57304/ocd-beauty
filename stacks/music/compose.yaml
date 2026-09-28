@@ -1,36 +1,35 @@
+x-common: &common
+  restart: unless-stopped
+  networks:
+    - proxy
+  security_opt:
+    - no-new-privileges:true
+
 services:
   navidrome:
+    <<: *common
     image: deluan/navidrome:0.64.2
-    networks:
-      - proxy
     volumes:
       - /srv/navidrome/data:/data
       - /srv/navidrome/music:/music:ro
-    restart: unless-stopped
     labels:
       glance.icon: sh:navidrome-light
       glance.name: Navidrome
       glance.url: https://music.ocd.beauty
-    security_opt:
-      - no-new-privileges:true
 
   navidrome-dufs:
+    <<: *common
     image: sigoden/dufs:v0.46.0
     command:
       - /data
       - -a
       - ${DUFS_USERNAME}:${DUFS_PASSWORD}@/:rw
-    networks:
-      - proxy
     volumes:
       - /srv/navidrome/music:/data
-    restart: unless-stopped
     labels:
       glance.icon: sh:dufs.webp
       glance.name: Navidrome's Dufs
       glance.url: https://file.music.ocd.beauty
-    security_opt:
-      - no-new-privileges:true
 
 networks:
   proxy:

@@ -1,18 +1,14 @@
 [global]
-allow_incoming_presence = false
-allow_local_presence = false
-allow_outgoing_read_receipts = false
-allow_outgoing_typing = false
-cache_capacity_modifier = 2.0
 database_path = "/var/lib/continuwuity"
 request_ip_source = "x_forwarded_for"
-rocksdb_compression_algo = "lz4"
-rocksdb_wal_compression = "none"
 server_name = "chat.ocd.beauty"
 
 [global.matrix_rtc]
 foci = [
-    { livekit_service_url = "https://rtc.chat.ocd.beauty", type = "livekit" },
+    {
+        livekit_service_url = "https://rtc.chat.ocd.beauty",
+        type = "livekit"
+    },
 ]
 
 [global.well_known]

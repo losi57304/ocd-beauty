@@ -1,21 +1,23 @@
 services:
   caddy:
     image: caddy:2.11.4
+    restart: unless-stopped
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    networks:
+      - proxy
     ports:
       - 80:80
       - 443:443
       - 443:443/udp
-    networks:
-      - proxy
     volumes:
       - /srv/caddy/config:/config
       - /srv/caddy/data:/data
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
-    restart: unless-stopped
-    labels:
-      glance.hide: true
     security_opt:
       - no-new-privileges:true
+    labels:
+      glance.hide: true
 
 networks:
   proxy:

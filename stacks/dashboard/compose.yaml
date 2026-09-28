@@ -1,6 +1,7 @@
 services:
   glance:
     image: glanceapp/glance:v0.8.6
+    restart: unless-stopped
     environment:
       AUTH_SECRET_KEY: ${AUTH_SECRET_KEY}
       AUTH_USERS_LOSI57304_PASSWORD: ${AUTH_USERS_LOSI57304_PASSWORD}
@@ -11,13 +12,12 @@ services:
       - /srv/glance/config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./glance.yaml:/app/config/glance.yml:ro
-    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     labels:
       glance.icon: sh:glance-light
       glance.name: Glance
       glance.url: https://dashboard.ocd.beauty
-    security_opt:
-      - no-new-privileges:true
 
 networks:
   proxy:

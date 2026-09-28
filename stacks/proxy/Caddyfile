@@ -3,7 +3,12 @@ chat.ocd.beauty {
 }
 
 rtc.chat.ocd.beauty {
-	reverse_proxy livekit-server:7880
+    @lk-jwt-service path /sfu/get* /healthz* /get_token*
+    route @lk-jwt-service {
+        reverse_proxy lk-jwt-service:8080
+    }
+
+    reverse_proxy host.docker.internal:7880
 }
 
 dashboard.ocd.beauty {
