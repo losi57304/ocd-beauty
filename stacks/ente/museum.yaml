@@ -1,5 +1,5 @@
 internal:
-  disable-registration: false
+  disable-registration: true
   hardcoded-ott:
     local-domain-suffix: "@ente.ocd.beauty"
     local-domain-value: "012345"

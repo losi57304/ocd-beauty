@@ -5,4 +5,3 @@ include:
   - stacks/monitoring/compose.yaml
   - stacks/music/compose.yaml
   - stacks/proxy/compose.yaml
-  - stacks/secret/compose.yaml

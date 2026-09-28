@@ -32,7 +32,3 @@ music.ocd.beauty {
 storage.ente.ocd.beauty {
 	reverse_proxy ente-garage:3900
 }
-
-secret.ocd.beauty {
-	reverse_proxy vaultwarden-server:80
-}
