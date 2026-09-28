@@ -3,12 +3,10 @@ chat.ocd.beauty {
 }
 
 rtc.chat.ocd.beauty {
-    @lk-jwt-service path /sfu/get* /healthz* /get_token*
-    route @lk-jwt-service {
-        reverse_proxy lk-jwt-service:8080
-    }
+	@lk-jwt-service path /sfu/get* /healthz* /get_token*
 
-    reverse_proxy host.docker.internal:7880
+	reverse_proxy host.docker.internal:7880
+	reverse_proxy @lk-jwt-service lk-jwt-service:8080
 }
 
 dashboard.ocd.beauty {
@@ -19,8 +17,8 @@ ente.ocd.beauty {
 	reverse_proxy ente-server:8080
 }
 
-s3.ente.ocd.beauty {
-	reverse_proxy ente-garage:3900
+file.music.ocd.beauty {
+	reverse_proxy navidrome-dufs:5000
 }
 
 monitoring.ocd.beauty {
@@ -31,8 +29,8 @@ music.ocd.beauty {
 	reverse_proxy navidrome:4533
 }
 
-file.music.ocd.beauty {
-	reverse_proxy navidrome-dufs:5000
+storage.ente.ocd.beauty {
+	reverse_proxy ente-garage:3900
 }
 
 secret.ocd.beauty {
