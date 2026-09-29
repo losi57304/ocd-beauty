@@ -24,6 +24,7 @@ services:
       - /data
       - -a
       - ${DUFS_USERNAME}:${DUFS_PASSWORD}@/:rw
+      - -A
     volumes:
       - /srv/navidrome/music:/data
     labels:
