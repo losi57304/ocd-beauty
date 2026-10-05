@@ -32,3 +32,7 @@ music.ocd.beauty {
 storage.ente.ocd.beauty {
 	reverse_proxy ente-garage:3900
 }
+
+subscription.ocd.beauty {
+    reverse_proxy wallos:80
+}

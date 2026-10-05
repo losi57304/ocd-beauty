@@ -1,0 +1,21 @@
+services:
+  wallos:
+    image: bellamy/wallos:5.8.3
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+    networks:
+      - proxy
+    volumes:
+      - '/srv/wallos/db:/var/www/html/db'
+      - '/srv/wallos/logos:/var/www/html/images/uploads/logos'
+    security_opt:
+      - no-new-privileges:true
+    labels:
+      glance.icon: sh:wallos-light
+      glance.name: Wallos
+      glance.url: https://subscription.ocd.beauty
+
+networks:
+  proxy:
+    external: true
