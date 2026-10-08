@@ -1,14 +1,3 @@
-chat.ocd.beauty {
-	reverse_proxy continuwuity:8008
-}
-
-rtc.chat.ocd.beauty {
-	@lk-jwt-service path /sfu/get* /healthz* /get_token*
-
-	reverse_proxy host.docker.internal:7880
-	reverse_proxy @lk-jwt-service lk-jwt-service:8080
-}
-
 dashboard.ocd.beauty {
 	reverse_proxy glance:8080
 }
@@ -21,7 +10,7 @@ monitoring.ocd.beauty {
 	reverse_proxy beszel:8090
 }
 
-postiz.ocd.beauty {
+postiz.geckos.audio {
 	reverse_proxy postiz:5000
 }
 

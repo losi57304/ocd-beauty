@@ -1,5 +1,4 @@
 include:
-  - stacks/chat/compose.yaml
   - stacks/dashboard/compose.yaml
   - stacks/ente/compose.yaml
   - stacks/monitoring/compose.yaml
