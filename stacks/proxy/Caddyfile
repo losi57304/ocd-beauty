@@ -21,6 +21,10 @@ monitoring.ocd.beauty {
 	reverse_proxy beszel:8090
 }
 
+postiz.ocd.beauty {
+	reverse_proxy postiz:5000
+}
+
 subscription.ocd.beauty {
     reverse_proxy wallos:80
 }

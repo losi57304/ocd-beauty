@@ -51,6 +51,20 @@ head -c 32 /dev/urandom | base64 | tr -d '\n'
 head -c 64 /dev/urandom | base64 | tr -d '\n'
 ```
 
+### Postiz
+`POSTGRES_PASSWORD`
+```sh
+head -c 21 /dev/urandom | base64 | tr -d '\n'
+```
+
+`JWT_SECRET`
+```sh
+head -c 32 /dev/urandom | base64 | tr -d '\n'
+```
+
+`DISABLE_REGISTRATION`\
+`false` for the first sign-up, then `true`
+
 ## Containers
 ### Ente
 ```sh

@@ -3,5 +3,6 @@ include:
   - stacks/dashboard/compose.yaml
   - stacks/ente/compose.yaml
   - stacks/monitoring/compose.yaml
+  - stacks/postiz/compose.yaml
   - stacks/proxy/compose.yaml
   - stacks/subscription/compose.yaml
